@@ -6,6 +6,7 @@ function TaskContainer() {
   return (
     <div className="container">
       <div className="row taskContainer">
+        
         <div className="col-lg-5 col-md-12 col-sm-12 taskList">
           <TaskList />
         </div>
