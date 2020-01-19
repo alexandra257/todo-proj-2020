@@ -8,8 +8,13 @@ class TaskList extends React.Component {
     return (
       <div>
           <TaskCount />
+         <div className="row">
+          <div className="col-8 taskBox">
+            <h1>taskbox</h1>
           <Task />
           </div>
+          </div>
+          
     );
   }
 }
