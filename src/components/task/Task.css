@@ -1,25 +1,36 @@
-.taskCounter{
-    color: #323840;
-    margin-top: 30px;
-    margin-left: 15px;
+.taskCount {
+  color: #323840;
+  margin-left: 15px;
 }
 
-.taskContainer{
-    margin: 30px 15px 30px 15px;
-    background-color: #96b39e;
+.taskContainer {
+  background-color: #faf8f5;
+  padding: 15px;
+  border-style: 1px solid grey;
+}
+
+.taskList {
+  background-color: #b6ccbc;
+  margin-top: 15px;
+  margin-left: 15px;
+  border-style: 1px solid grey;
+
+ 
+
+}
+
+.addTask {
+  background-color:#eae4f2;
+  margin-top: 15px;
+  margin-left: 15px;
+  border-style: 1px solid grey;
+
 }
 
 
-.taskList{
-  background-color:lightgrey;
+.task {
+  background-color: #faf8f5;
+  margin: 15px;
+  border-style: 1px solid grey;
 
-  
-  }
-.addTask{
-  background-color:lightgrey; 
-  }
-
-
-  
-
-  
+}

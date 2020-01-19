@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import PageHeader from './components/headers/PageHeader';
+import Header from './components/headers/Header';
 
 import TaskContainer from './components/task/TaskContainer';
 
 function App() {
   return (
     <div className="container">
-    <PageHeader />
+    <Header />
+    <div className="col-12 border">
     <TaskContainer /> 
+      </div>
       </div>
   );
 }

@@ -4,8 +4,8 @@ import './Task.css';
 class TaskCount extends React.Component {
     render() {
       return (
-     <div className="taskCounter">
-       <h1>Tasks left: 4</h1>
+        <div className="row taskList">
+       <h2>Tasks left: 4</h2>
      </div>
       );
     }

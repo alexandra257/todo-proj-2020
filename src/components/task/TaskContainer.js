@@ -4,18 +4,25 @@ import AddTask from "./AddTask";
 
 function TaskContainer() {
   return (
-    <div className="container">
-      <div className="row taskContainer">
-        
-        <div className="col-lg-5 col-md-12 col-sm-12 taskList">
+    <div className="container-fluid">
+      <div className="row border taskContainer">
+
+        <div className="col-lg-5 col-md-11 col-sm-11 border taskList">
           <TaskList />
         </div>
 
-        <div className="col-lg-5 col-md-12 col-sm-12 addTask">
-          <AddTask />
+
+
+        <div className="col-lg-5 col-md-11 col-sm-11 border addTask">
+          
+
+        <AddTask />
+
         </div>
       </div>
-    </div>
+      </div>
+      
+  
   );
 }
 
