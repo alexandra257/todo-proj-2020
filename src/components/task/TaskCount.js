@@ -1,15 +1,16 @@
 import React from "react";
-import './Task.css';
+import "./Task.css";
 
 class TaskCount extends React.Component {
-    render() {
-      return (
-        <div className="row taskList">
-       <h2>Tasks left: 4</h2>
-     </div>
-      );
-    }
+  render() {
+    return (
+      <div className="row taskCount">
+        <div className="col-12">
+          <h2>Tasks left: {this.props.taskCount}</h2>
+        </div>
+      </div>
+    );
   }
-  
-  export default TaskCount;
+}
 
+export default TaskCount;

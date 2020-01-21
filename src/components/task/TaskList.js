@@ -1,23 +1,24 @@
 import React from "react";
-import './Task.css';
-import TaskCount from "./TaskCount";
+import "./Task.css";
 import Task from "./Task";
 
 class TaskList extends React.Component {
   render() {
     return (
       <div>
-          <TaskCount />
-         <div className="row">
-          <div className="col-8 taskBox">
-            <h1>taskbox</h1>
-          <Task />
+        <div className="row">
+          <div className="col-11 taskBox">
+            {/* TASKBOX LOOP BELOW*/}
+
+            {this.props.taskCollection.map(taskItem => (
+              <Task item={taskItem} key={taskItem.id} deleteTaskFunc={this.props.deleteTaskFunc} />
+            )) //prop is 'item'
+            }
           </div>
-          </div>
-          
+        </div>
+      </div>
     );
   }
 }
 
 export default TaskList;
-
