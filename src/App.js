@@ -8,66 +8,63 @@ import uuidv4 from "uuid/v4";
 
 class App extends React.Component {
   state = {
-    tasks: [
-      // { id: uuidv4(), description: "task 1", completed: false },
-      // { id: uuidv4(), description: "task 2", completed: false },
-      // { id: uuidv4(), description: "task 3", completed: false },
-    ]
+    tasks: []    
   };
 
-  deleteTask = taskId => {
-    //Tasks will be deleted when this function executes
-    //Identify task that matches the given id & remove it
-    // updatedTasks = filtered list of tasks that are not equal to the taskId
-    const updatedTasks = this.state.tasks.filter(item => item.id !== taskId);
 
-    //(deleted task will have been removed from the array)
 
-    //Update the state with the new collection of tasks
-    //here we set the old state of task to a new state called updatedTasks
-    //we overwrite the state with updatedTasks
-    this.setState({
-      tasks: updatedTasks
-    });
-  };
 
-  completeTask = taskId => {
-    const tasksBeingUpdated = this.state.tasks; //array of tasks
-    for (let i = 0; i < tasksBeingUpdated.length; i++) {
-      //looping through the array of tasks
-      const task = tasksBeingUpdated[i]; //looking at each individual one
-      console.log(task.description);
-
-      if (task.id === taskId) {
-        //if the task id matches, then follow the code below
-        task.completed = true;
-        break;
-      }
-    }
-    this.setState({
-      tasks: tasksBeingUpdated
-    });
-  };
-
-  addTask = taskDescription => {
-    //defining task that is to be added
+  addTask = taskDescription => {     //defining task that is to be added
     const taskToAdd = {
       id: uuidv4(),
       description: taskDescription,
       completed: false
     };
 
-    //get current list of tasks from state
-    const currentTasks = this.state.tasks;
 
-    //add the taskToAdd to the array of tasks in state
-    currentTasks.push(taskToAdd);
-    //update the state
 
+    const currentTasks = this.state.tasks;     //get current list of tasks from state
+    currentTasks.push(taskToAdd);    //add the new task onto the array of tasks in state
     this.setState({
-      tasks: currentTasks
+      tasks: currentTasks   //updating the state 
     });
   };
+
+
+  completeTask = taskId => {
+    alert('you want to complete ${taskId} from state')
+  }
+  //   const tasksBeingUpdated = this.state.tasks;  //array of tasks
+  //   for (let i = 0; i < tasksBeingUpdated.length; i++) {  //looping through the array of tasks
+  //     const task = tasksBeingUpdated[i]; //looking at each individual one
+  //     console.log(task.description);
+
+  //     if (task.id === taskId) { //if the task id matches, 
+  //       task.completed = true;    //mark task completed as true
+  //       break;
+  //     }
+  //   }
+  //   this.setState({
+  //     tasks: tasksBeingUpdated  //updating the state
+  //   });
+  // };
+
+
+  
+
+  //deleteTask identifies the task with matching id & removes it
+  deleteTask = taskId => {     
+    const updatedTasks = this.state.tasks.filter(item => item.id !== taskId);     // updatedTasks = filtered list of tasks that are not equal to the taskId
+    this.setState({
+      tasks: updatedTasks      //here we update & overwrite the state to a new state called updatedTasks
+    });
+  };
+
+
+
+ 
+
+
 
   render() {
     return (
@@ -79,8 +76,7 @@ class App extends React.Component {
             <div className="col-lg-5 col-md-11 col-sm-11 border taskList">
               <TaskCount taskCount={this.state.tasks.length} />
 
-              {/* WE PASS THE deleteTaskFunc TO TaskList BECAUSE TASK LIST BRINGS IN THE TASK. 
-deleteTaskFunc is the prop, deleteTask function is the value */}
+              {/* pass deleteTaskFunc to TaskList because Task.js is a child of this component. deleteTaskFunc is the prop*/}
               <TaskList
                 taskCollection={this.state.tasks}
                 deleteTaskFunc={this.deleteTask}
