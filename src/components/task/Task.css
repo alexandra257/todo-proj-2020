@@ -45,3 +45,7 @@
 .btn{
   padding: 3px;
 }
+
+.completedTask {
+text-decoration: line-through;
+}
