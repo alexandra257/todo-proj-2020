@@ -32,25 +32,24 @@ class App extends React.Component {
 
 
   completeTask = taskId => {
-    alert('you want to complete ${taskId} from state')
+//Find task that needs to be updated
+const tasksBeingUpdated = this.state.tasks;
+//Update a property on the identified task
+for(let i = 0; i < tasksBeingUpdated.length; i++){ //looping through the array of tasks
+  const task = tasksBeingUpdated[i]; //looking at each individual one
+
+  if(task.id === taskId) { //if the task id matches the taskID passed in
+    task.completed = true;  //mark task completed as true
+    break;
   }
-  //   const tasksBeingUpdated = this.state.tasks;  //array of tasks
-  //   for (let i = 0; i < tasksBeingUpdated.length; i++) {  //looping through the array of tasks
-  //     const task = tasksBeingUpdated[i]; //looking at each individual one
-  //     console.log(task.description);
+}
+//Update state to reflect changes
 
-  //     if (task.id === taskId) { //if the task id matches, 
-  //       task.completed = true;    //mark task completed as true
-  //       break;
-  //     }
-  //   }
-  //   this.setState({
-  //     tasks: tasksBeingUpdated  //updating the state
-  //   });
-  // };
+  this.setState({
+    tasks: tasksBeingUpdated
+  })
+}
 
-
-  
 
   //deleteTask identifies the task with matching id & removes it
   deleteTask = taskId => {     
