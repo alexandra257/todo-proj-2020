@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/headers/Header";
+import Title from './components/headers/Title';
+import Weather from "./components/WeatherWidget/Weather";
 import TaskCount from "./components/task/TaskCount";
 import TaskList from "./components/task/TaskList";
 import AddTask from "./components/task/AddTask";
@@ -8,7 +9,10 @@ import uuidv4 from "uuid/v4";
 
 class App extends React.Component {
   state = {
-    tasks: []    
+    tasks: [
+      { id: 12345, description: 'this is a task', completed: false },
+      { id: 45678, description: 'this is another task', completed: false }
+    ]
   };
 
 
@@ -32,27 +36,27 @@ class App extends React.Component {
 
 
   completeTask = taskId => {
-//Find task that needs to be updated
-const tasksBeingUpdated = this.state.tasks;
-//Update a property on the identified task
-for(let i = 0; i < tasksBeingUpdated.length; i++){ //looping through the array of tasks
-  const task = tasksBeingUpdated[i]; //looking at each individual one
+    //Find task that needs to be updated
+    const tasksBeingUpdated = this.state.tasks;
+    //Update a property on the identified task
+    for (let i = 0; i < tasksBeingUpdated.length; i++) { //looping through the array of tasks
+      const task = tasksBeingUpdated[i]; //looking at each individual one
 
-  if(task.id === taskId) { //if the task id matches the taskID passed in
-    task.completed = true;  //mark task completed as true
-    break;
+      if (task.id === taskId) { //if the task id matches the taskID passed in
+        task.completed = true;  //mark task completed as true
+        break;
+      }
+    }
+    //Update state to reflect changes
+
+    this.setState({
+      tasks: tasksBeingUpdated
+    })
   }
-}
-//Update state to reflect changes
-
-  this.setState({
-    tasks: tasksBeingUpdated
-  })
-}
 
 
   //deleteTask identifies the task with matching id & removes it
-  deleteTask = taskId => {     
+  deleteTask = taskId => {
     const updatedTasks = this.state.tasks.filter(item => item.id !== taskId);     // updatedTasks = filtered list of tasks that are not equal to the taskId
     this.setState({
       tasks: updatedTasks      //here we update & overwrite the state to a new state called updatedTasks
@@ -61,36 +65,43 @@ for(let i = 0; i < tasksBeingUpdated.length; i++){ //looping through the array o
 
 
 
- 
-
 
 
   render() {
     return (
       <div className="container">
-        <Header />
 
-        <div className="container col-12">
-          <div className="row border taskContainer">
-            <div className="col-lg-5 col-md-11 col-sm-11 border taskList">
-              <TaskCount taskCount={this.state.tasks.length} />
 
-              {/* pass deleteTaskFunc to TaskList because Task.js is a child of this component. deleteTaskFunc is the prop*/}
-              <TaskList
-                taskCollection={this.state.tasks}
-                deleteTaskFunc={this.deleteTask}
-                completedTaskFunc={this.completeTask}
-              />
-            </div>
-
-            <div className="col-lg-5 col-md-11 col-sm-11 ml-4 border addTask">
-              <h2>Add a task: </h2>
-
-              <AddTask addTaskFunc={this.addTask} />
-            </div>
+        <div className="row">
+          <div className="col border border-dark">
+            <Title />
+          </div>
+          <div className="col border border-dark">
+            <Weather />
           </div>
         </div>
-      </div>
+
+
+        <div className="row border border-dark">
+          <div className="col-lg-6 col-md-12 col-sm-12 border border-dark addTask">
+            <h2>Add a task: </h2>
+
+            <AddTask addTaskFunc={this.addTask} />
+          </div>
+
+          <div className="col-lg-6 col-md-12 col-sm-12 border border-dark taskList">
+            <TaskCount taskCount={this.state.tasks.length} />
+            <TaskList
+              taskCollection={this.state.tasks}
+              deleteTaskFunc={this.deleteTask}
+              completedTaskFunc={this.completeTask}
+            />
+
+          </div>
+        </div>
+
+
+      </div >
     );
   }
 }
