@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Time() {
     //split divides the date/time string at each space and returns an array
-    const today = (new Date()).toString().split(' ').splice(1, 2).join(' ') + addSuffix(); //splice(1, 2) takes the 2nd & 3rd values of the string
+    const today = (new Date()).toString().split(' ').splice(1, 2).join(' ') + addSuffix(); //splice(1, 2) takes the 2nd & 3rd values of the string and calling the suffix function
     //then we join those together using the .join() method
 
 
@@ -40,7 +40,7 @@ function Time() {
         return "th";  //else return 'th'
     }
 
-    addSuffix(today);
+    addSuffix(today); //passing in the current date which is stored in the variable today
 
 
     return (
