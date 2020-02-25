@@ -6,4 +6,13 @@ body {
   color: #323840;
 }
 
+.time{
+  font-family: 'Dancing Script';
+  font-size: 20px;
+  /* text-align: right; */
+}
 
+.heading{
+  font-family: 'Dancing Script';
+  font-size: 88px;
+}

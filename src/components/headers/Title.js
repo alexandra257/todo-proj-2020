@@ -1,5 +1,4 @@
 import React from "react";
-import './headings.css';
 
 function title() {
   return (

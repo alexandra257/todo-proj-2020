@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Title from './components/headers/Title';
-import Weather from "./components/WeatherWidget/Weather";
+import Time from './components/Time/Time';
 import TaskCount from "./components/task/TaskCount";
 import TaskList from "./components/task/TaskList";
 import AddTask from "./components/task/AddTask";
@@ -36,12 +36,10 @@ class App extends React.Component {
 
 
   completeTask = taskId => {
-    //Find task that needs to be updated
-    const tasksBeingUpdated = this.state.tasks;
-    //Update a property on the identified task
+    const tasksBeingUpdated = this.state.tasks;     //Find task that needs to be updated 
     for (let i = 0; i < tasksBeingUpdated.length; i++) { //looping through the array of tasks
-      const task = tasksBeingUpdated[i]; //looking at each individual one
 
+      const task = tasksBeingUpdated[i]; //looking at each individual one
       if (task.id === taskId) { //if the task id matches the taskID passed in
         task.completed = true;  //mark task completed as true
         break;
@@ -77,15 +75,16 @@ class App extends React.Component {
             <Title />
           </div>
           <div className="col border border-dark">
-            <Weather />
+            <Time />
           </div>
         </div>
 
 
+
         <div className="row border border-dark">
+
           <div className="col-lg-6 col-md-12 col-sm-12 border border-dark addTask">
             <h2>Add a task: </h2>
-
             <AddTask addTaskFunc={this.addTask} />
           </div>
 
@@ -101,7 +100,7 @@ class App extends React.Component {
         </div>
 
 
-      </div >
+      </div>
     );
   }
 }
