@@ -27,14 +27,13 @@ function Time() {
 
 
     function addSuffix(num) {
-        var array = ("" + num).split("").reverse(); // E.g. 123 = array["3","2","1"] - needs to be reversed because of single digit dates
-
-        if (array[1] !== "1") { // Number is 11th, 12th, 13th)
-
-            switch (array[0]) {    //get the first value of the array
-                case "1": return "st";
-                case "2": return "nd";
-                case "3": return "rd";
+        var array = ("" + num).split("").reverse(); // reverses array values, e.g 24 = array["4", "2"]
+        //numbers need to be reversed because of single digit dates & to identify the 11th/12th/13th
+        if (array[1] !== "1") { // if at index 1 of the array, the value is not 1
+            switch (array[0]) {    //get the first value of the array & run the switch statement below
+                case "1": return "st"; //return st when 1 is the value at index 0 of array
+                case "2": return "nd"; //return nd when 2 is the value at index 0 of array
+                case "3": return "rd"; //return rd when 3 is the value at index 0 of array
                 default:
             }
         }
