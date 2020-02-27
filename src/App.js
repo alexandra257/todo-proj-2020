@@ -10,12 +10,16 @@ import uuidv4 from "uuid/v4";
 class App extends React.Component {
   state = {
     tasks: [
-      { id: 12345, description: 'this is a task', completed: false, starred: false },
-      { id: 45678, description: 'this is another task', completed: false, starred: false }
+      // { id: 12345, description: 'this is a task', completed: false, starred: false },
+      // { id: 45678, description: 'this is another task', completed: false, starred: false }
     ]
   };
 
-
+  //this function will fire when the component loads on the screen
+  //this can be used in any component 
+  componentDidMount = () => {
+    console.log("app loaded");
+  }
 
 
   addTask = taskDescription => {     //defining task that is to be added
@@ -83,24 +87,24 @@ class App extends React.Component {
 
 
         <div className="row">
-          <div className="col border border-dark">
+          <div className="col">
             <Title />
           </div>
-          <div className="col border border-dark">
+          <div className="col">
             <Time />
           </div>
         </div>
 
 
 
-        <div className="row border border-dark">
+        <div className="row rounded">
 
-          <div className="col-lg-6 col-md-12 col-sm-12 border border-dark addTask">
+          <div className="col-lg-6 col-md-12 col-sm-12 rounded addTask">
             <h2>Add a task: </h2>
             <AddTask addTaskFunc={this.addTask} />
           </div>
 
-          <div className="col-lg-6 col-md-12 col-sm-12 border border-dark taskList">
+          <div className="col-lg-6 col-md-12 col-sm-12 rounded taskList">
             <TaskCount taskCount={this.state.tasks.length} />
             <TaskList
               taskCollection={this.state.tasks}

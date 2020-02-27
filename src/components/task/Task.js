@@ -55,7 +55,7 @@ class Task extends React.Component {
 
 
     return (
-      <div className="row border border-dark task" >
+      <div className="row border rounded task" >
         <table className="table table-striped">
           <thead>
             <tr>
