@@ -34,3 +34,24 @@
 .completedTask {
 text-decoration: line-through;
 }
+/* 
+.starred{
+  background-color: #feb72b;
+} */
+
+
+
+.priorityCol{
+  width: 10%;
+}
+.descriptionCol{
+  width: 70%;
+
+}
+.addCol{
+  width: 10%;
+
+}
+.deleteCol{
+  width: 10%;
+}

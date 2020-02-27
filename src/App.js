@@ -10,8 +10,8 @@ import uuidv4 from "uuid/v4";
 class App extends React.Component {
   state = {
     tasks: [
-      { id: 12345, description: 'this is a task', completed: false },
-      { id: 45678, description: 'this is another task', completed: false }
+      { id: 12345, description: 'this is a task', completed: false, starred: false },
+      { id: 45678, description: 'this is another task', completed: false, starred: false }
     ]
   };
 
@@ -22,11 +22,9 @@ class App extends React.Component {
     const taskToAdd = {
       id: uuidv4(),
       description: taskDescription,
-      completed: false
+      completed: false,
+      starred: false
     };
-
-
-
     const currentTasks = this.state.tasks;     //get current list of tasks from state
     currentTasks.push(taskToAdd);    //add the new task onto the array of tasks in state
     this.setState({
@@ -35,18 +33,17 @@ class App extends React.Component {
   };
 
 
+
   completeTask = taskId => {
     const tasksBeingUpdated = this.state.tasks;     //Find task that needs to be updated 
     for (let i = 0; i < tasksBeingUpdated.length; i++) { //looping through the array of tasks
-
       const task = tasksBeingUpdated[i]; //looking at each individual one
       if (task.id === taskId) { //if the task id matches the taskID passed in
         task.completed = true;  //mark task completed as true
+        //need to ensure the counter is
         break;
       }
     }
-    //Update state to reflect changes
-
     this.setState({
       tasks: tasksBeingUpdated
     })
@@ -61,6 +58,21 @@ class App extends React.Component {
     });
   };
 
+
+  starTask = taskId => {
+    const starredTask = this.state.tasks;
+    for (let i = 0; i < starredTask.length; i++) {
+      const task = [i];
+      if (task.id === taskId) {
+        task.starred = true;
+        break;
+      }
+    }
+    this.setState({
+      tasks: starredTask
+    })
+    // console.log('task was starred');
+  };
 
 
 
@@ -94,6 +106,7 @@ class App extends React.Component {
               taskCollection={this.state.tasks}
               deleteTaskFunc={this.deleteTask}
               completedTaskFunc={this.completeTask}
+              starTaskFunc={this.starTask}
             />
 
           </div>

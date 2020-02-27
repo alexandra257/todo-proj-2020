@@ -3,13 +3,19 @@ import "./Task.css";
 
 class TaskCount extends React.Component {
   render() {
-    return (
-      <div className="row taskCount">
-        <div className="col-12">
-          <h2>Tasks left: {this.props.taskCount}</h2>
-        </div>
+    if (this.props.taskCount === 0) {
+      return <h3 className="m-3">Congrats, you can relax! There are tasks no to do.</h3>
+    } else {
+      return (<div className="m-3 taskCount">
+        <h2>Tasks left: {this.props.taskCount}</h2>
       </div>
-    );
+      );
+    }
+
+    // return (
+
+    //   { areThereTasks }
+    // );
   }
 }
 

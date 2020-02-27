@@ -12,6 +12,7 @@ class TaskList extends React.Component {
             key={taskItem.id}
             deleteTaskFunc={this.props.deleteTaskFunc}
             completedTaskFunc={this.props.completedTaskFunc}
+            starTaskFunc={this.props.starTaskFunc}
           />
         ))
         }

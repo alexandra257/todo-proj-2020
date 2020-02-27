@@ -46,8 +46,8 @@ function Time() {
     return (
         <div className="container">
 
-            <div className="row ml-auto justify-content-right time">
-                <h1 className="text-right">{today}</h1>
+            <div className="row ml-auto time">
+                <h1>{today}</h1>
             </div>
             <div className="row ml-auto time">
                 <h1>{time}</h1>{/*we use {time} to insert the dynamic value of 'time' into this h1*/}
