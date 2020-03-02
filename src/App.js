@@ -97,14 +97,27 @@ class App extends React.Component {
     })
   }
 
-
+  //WE CAN MANIPULATE STATE HERE & SEND API REQUESTS
   //deleteTask identifies the task with matching id & removes it
   deleteTask = taskId => {
-    const updatedTasks = this.state.tasks.filter(item => item.id !== taskId);     // updatedTasks = filtered list of tasks that are not equal to the taskId
-    this.setState({
-      tasks: updatedTasks      //here we update & overwrite the state to a new state called updatedTasks
-    });
+    axios.delete(`https://oabkodhmw0.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskId}`)
+      .then((response) => {
+        // updatedTasks = filtered list of tasks that are not equal to the taskId
+        const updatedTasks = this.state.tasks.filter(item => item.taskID !== taskId);
+
+        this.setState({
+          tasks: updatedTasks
+        });
+      })
+      //This executes if the .then fails (TRY / CATCH). the app doesn't stop, we just catch the error
+      .catch((error) => {
+        // handle error
+        console.error(error);
+      });
+
+
   };
+
 
 
   starTask = taskId => {

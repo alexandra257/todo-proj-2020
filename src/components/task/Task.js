@@ -8,16 +8,16 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 class Task extends React.Component {
   deleteClicked = () => {
-    this.props.deleteTaskFunc(this.props.item.id);
+    this.props.deleteTaskFunc(this.props.item.taskID);
   };
 
 
   doneClicked = () => {
-    this.props.completedTaskFunc(this.props.item.id);
+    this.props.completedTaskFunc(this.props.item.taskID);
   };
 
   starTaskClick = () => {
-    this.props.starTaskFunc(this.props.item.id);
+    this.props.starTaskFunc(this.props.item.taskID);
     console.log('star was clicked');
   }
 
