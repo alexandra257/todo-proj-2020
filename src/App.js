@@ -36,13 +36,7 @@ class App extends React.Component {
   }
 
 
-  addTask = taskDescription => {     //defining task that is to be added
-    // const taskToAdd = {
-    // id: uuidv4(),
-    //   description: taskDescription,
-    //   completed: false,
-    //   starred: false
-    // };
+  addTask = taskDescription => {
 
     const taskToAdd = {
       //no taskID needed because we generate the uuid in the backend
@@ -83,19 +77,35 @@ class App extends React.Component {
 
 
   completeTask = taskId => {
-    const tasksBeingUpdated = this.state.tasks;     //Find task that needs to be updated 
-    for (let i = 0; i < tasksBeingUpdated.length; i++) { //looping through the array of tasks
-      const task = tasksBeingUpdated[i]; //looking at each individual one
-      if (task.id === taskId) { //if the task id matches the taskID passed in
-        task.completed = true;  //mark task completed as true
-        //need to ensure the counter is
-        break;
-      }
-    }
-    this.setState({
-      tasks: tasksBeingUpdated
-    })
-  }
+
+    const taskCompleted = { completed: 1 }
+
+    axios.put(`https://oabkodhmw0.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskId}`, taskCompleted)
+      .then((response) => {
+
+        const taskCompleted = this.state.tasks;     //Find task that needs to be updated 
+        for (let i = 0; i < taskCompleted.length; i++) { //looping through the array of tasks
+          const task = taskCompleted[i]; //looking at each individual one
+          if (task.taskId === taskId) { //if the task id matches the taskID passed in
+            task.completed = true;  //mark task completed as true
+            //need to ensure the counter is
+            break;
+          }
+        }
+
+        this.setState({
+          tasks: taskCompleted
+        });
+      })
+      //This executes if the .then fails (TRY / CATCH). the app doesn't stop, we just catch the error
+      .catch((error) => {
+        // handle error
+        console.error(error);
+      });
+
+
+  };
+
 
   //WE CAN MANIPULATE STATE HERE & SEND API REQUESTS
   //deleteTask identifies the task with matching id & removes it
