@@ -86,7 +86,7 @@ class App extends React.Component {
         const taskCompleted = this.state.tasks;     //Find task that needs to be updated 
         for (let i = 0; i < taskCompleted.length; i++) { //looping through the array of tasks
           const task = taskCompleted[i]; //looking at each individual one
-          if (task.taskId === taskId) { //if the task id matches the taskID passed in
+          if (task.taskID === taskId) { //if the task id matches the taskID passed in
             task.completed = true;  //mark task completed as true
             //need to ensure the counter is
             break;
@@ -102,8 +102,6 @@ class App extends React.Component {
         // handle error
         console.error(error);
       });
-
-
   };
 
 

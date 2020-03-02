@@ -28,7 +28,7 @@ function Time() {
     //then we join those together using the .join() method
 
     const today = new Date().getDay().toString();
-    console.log(today);
+    // console.log(today);
     const month = new Date().getMonth();
 
 
