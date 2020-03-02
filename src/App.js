@@ -5,7 +5,7 @@ import Time from './components/Time/Time';
 import TaskCount from "./components/task/TaskCount";
 import TaskList from "./components/task/TaskList";
 import AddTask from "./components/task/AddTask";
-import uuidv4 from "uuid/v4";
+import axios from "axios";
 
 class App extends React.Component {
   state = {
@@ -18,22 +18,66 @@ class App extends React.Component {
   //this function will fire when the component loads on the screen
   //this can be used in any component 
   componentDidMount = () => {
-    console.log("app loaded");
+    //FETCH tasks from the API when our app loads 
+    //once the get finishes, .then will fire (then is a promise, when get finishes, i promise to get x)
+    axios.get('https://oabkodhmw0.execute-api.eu-west-2.amazonaws.com/dev/tasks')
+      .then((response) => {
+        // handle success
+        this.setState({
+          tasks: response.data.tasks
+        })
+      })
+      //This executes if the .then fails (TRY / CATCH). the app doesn't stop, we just catch the error
+      .catch((error) => {
+        // handle error
+        console.error(error);
+      });
+
   }
 
 
   addTask = taskDescription => {     //defining task that is to be added
+    // const taskToAdd = {
+    // id: uuidv4(),
+    //   description: taskDescription,
+    //   completed: false,
+    //   starred: false
+    // };
+
     const taskToAdd = {
-      id: uuidv4(),
+      //no taskID needed because we generate the uuid in the backend
       description: taskDescription,
-      completed: false,
-      starred: false
-    };
-    const currentTasks = this.state.tasks;     //get current list of tasks from state
-    currentTasks.push(taskToAdd);    //add the new task onto the array of tasks in state
-    this.setState({
-      tasks: currentTasks   //updating the state 
-    });
+      completed: 0,
+      user_id: "7096d2b7-e612-4b44-a9e2-8e29fc9bed69"
+    }
+
+    //tasksToAdd being sent to the backend API as a POST
+    //when it succeeds, console log it
+    //same endpoint as get
+    //passing it our JSON object above (taskToAdd)
+    axios.post('https://oabkodhmw0.execute-api.eu-west-2.amazonaws.com/dev/tasks', taskToAdd)
+      .then((response) => {
+
+        //tells the front end what the taskID is of the task that gets saved
+        taskToAdd.taskId = response.data.task.taskID
+        console.log(taskToAdd);
+
+
+        const currentTasks = this.state.tasks;     //get current list of tasks from state
+        currentTasks.push(taskToAdd);    //add the new task onto the array of tasks in state
+
+        //update state
+        this.setState({
+          tasks: currentTasks
+        });
+
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
+
+
   };
 
 
