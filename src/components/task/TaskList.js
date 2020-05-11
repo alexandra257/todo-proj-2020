@@ -5,8 +5,8 @@ import Task from "./Task";
 class TaskList extends React.Component {
   render() {
     return (
-      <div className="col mb-4 rounded taskBox">
-        {this.props.taskCollection.map(taskItem => (
+      <div className="col mb-4 rounded task-box">
+        {this.props.taskCollection.map((taskItem) => (
           <Task
             item={taskItem}
             key={taskItem.taskID}
@@ -14,8 +14,7 @@ class TaskList extends React.Component {
             completedTaskFunc={this.props.completedTaskFunc}
             starTaskFunc={this.props.starTaskFunc}
           />
-        ))
-        }
+        ))}
       </div>
     );
   }

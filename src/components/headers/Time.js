@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//
 var moment = require("moment");
 moment().format();
 
@@ -13,6 +14,7 @@ function Time() {
     fontFamily: "Dancing Script",
     fontSize: "40px",
     textAlign: "right",
+    fontWeight: "normal",
   };
 
   const date = moment().format("MMMM Do YYYY");
@@ -30,7 +32,6 @@ function Time() {
   return (
     <div>
       <p style={timeStyle}>{time}</p>
-
       <p style={dateStyle}>{date}</p>
     </div>
   );

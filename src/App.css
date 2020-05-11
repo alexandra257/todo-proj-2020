@@ -1,18 +1,6 @@
-
 body {
-  font-family: 'Josefin Slab', serif;
-  background-color:#e4f2f2;
+  font-family: "Josefin Slab", serif;
+  background-color: #e4f2f2;
   margin: 30px 15px 30px 15px;
   color: #323840;
-}
-
-.time{
-  font-family: 'Dancing Script';
-  font-size: 20px;
-  /* text-align: right; */
-}
-
-.heading{
-  font-family: 'Dancing Script';
-  font-size: 88px;
 }

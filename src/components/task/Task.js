@@ -1,92 +1,93 @@
 import React from "react";
 import "./Task.css";
-import { styled } from '@material-ui/core/styles';
-import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
-import DoneOutlineOutlinedIcon from '@material-ui/icons/DoneOutlineOutlined';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-// import StarIcon from '@material-ui/icons/Star';
+import { styled } from "@material-ui/core/styles";
+import { IconButton } from "@material-ui/core";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
+import StarIcon from "@material-ui/icons/Star";
 
 class Task extends React.Component {
+  getStyle = () => {
+    //setting generic styling of each task
+    return {
+      background: "white",
+      padding: "10px",
+      marginTop: "10px",
+      marginBottom: "10px",
+      borderBottom: "1px #ccc solid",
+      // -----------  CONDITIONAL STYLING  -----------
+      textDecoration: this.props.item.completed ? "line-through" : "none", // if the task is completed, strike through
+      color: this.props.item.completed ? "#5b8c5a" : "grey", // if task.completed is true in state, turn text green
+    };
+  };
+
+  compButtonStyle = () => {
+    return {
+      color: this.props.item.completed ? "#5b8c5a" : "grey", // if task.completed is true in state, turn icon green
+    };
+  };
+
+  //no column in database yet
+  // starButtonStyle = () => {
+  //   return {
+  //     color: this.props.task.starred ? "#feb72b" : "grey", // if task.starred is true in state, turn icon yellow
+  //   };
+  // };
+
   deleteClicked = () => {
     this.props.deleteTaskFunc(this.props.item.taskID);
   };
 
-
   doneClicked = () => {
     this.props.completedTaskFunc(this.props.item.taskID);
-
   };
 
   starTaskClick = () => {
     this.props.starTaskFunc(this.props.item.taskID);
-    console.log('star was clicked');
-  }
+    console.log("star was clicked");
+  };
 
   render() {
-
-    let description;
-    if (this.props.item.completed) {
-      description = <div className="completedTask">{this.props.item.description}</div>
-    } else {
-      description = <div>{this.props.item.description}</div>
-    }
-
-
-
-    const StarButtonOutline = styled(StarBorderIcon)({
-      color: '#feb72b',
+    const DeleteButton = styled(DeleteForeverIcon)({
+      color: "#FE6B8B", // set colour of delete icon to red
     });
-    // const StarButtonFilled = styled(StarIcon)({
-    //   color: '#feb72b',
-    // });
-    const CompleteButton = styled(DoneOutlineOutlinedIcon)({
-      color: '#5b8c5a'
-    });
-    const DeleteButton = styled(DeleteForeverOutlinedIcon)({
-      color: '#FE6B8B'
-    });
-
-
-
 
     return (
-      <div className="row border rounded task" >
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col" className="priorityCol"></th>
-              <th scope="col" className="descriptionCol"></th>
-              <th scope="col" className="addCol"></th>
-              <th scope="col" className="deleteCol"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">
-                <button type="button" className="btn"><StarButtonOutline onClick={this.starTaskClick} /></button>
-              </th>
-              <td className="taskDescription">{description}</td>
+      <div className="row mx-auto rounded" style={this.getStyle()}>
+        <IconButton
+          className="col-1 d-flex align-self-left"
+          aria-label="star"
+          // onClick={() => this.starTaskClick}
+        >
+          <StarIcon />
+        </IconButton>
 
-              <td> {!this.props.item.completed && (              //if the task is not completed + the done button is clicked, remove the done button
-                <button type="button"
-                  className="btn">
-                  <CompleteButton onClick={this.doneClicked} />
-                </button>
-              )}</td>
+        <div className="col-9 d-flex align-self-center">
+          {this.props.item.description}
+        </div>
 
-              <td>
-                <button
-                  type="button"
-                  className="btn">
-                  <DeleteButton onClick={this.deleteClicked} />
-                </button></td>
-            </tr>
-          </tbody>
-        </table>
+        <IconButton
+          className="col-1 d-flex align-self-right"
+          aria-label="tick"
+          onClick={() => this.doneClicked()} // calling markComplete when the relevant icon is clicked & passing the id of the selected task up to it in app.js
+        >
+          {/* applying conditional styling to the completed icon defined above */}
+          <AssignmentTurnedInIcon style={this.compButtonStyle()} />
+        </IconButton>
+
+        <IconButton
+          className="col-1 d-flex align-self-right"
+          aria-label="bin"
+          onClick={() => this.deleteClicked()} // calling markDelete when the relevant icon is clicked & passing the id of the selected task up to it in app.js
+        >
+          <DeleteButton />
+        </IconButton>
       </div>
-
     );
   }
 }
+
+//   }
+// }
 
 export default Task;
