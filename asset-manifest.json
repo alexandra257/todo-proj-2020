@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/todo-proj-2020/static/css/main.11aac216.chunk.css",
+    "main.js": "/todo-proj-2020/static/js/main.3c8388e8.chunk.js",
+    "main.js.map": "/todo-proj-2020/static/js/main.3c8388e8.chunk.js.map",
+    "runtime-main.js": "/todo-proj-2020/static/js/runtime-main.bbbc9304.js",
+    "runtime-main.js.map": "/todo-proj-2020/static/js/runtime-main.bbbc9304.js.map",
+    "static/js/2.fe3701c9.chunk.js": "/todo-proj-2020/static/js/2.fe3701c9.chunk.js",
+    "static/js/2.fe3701c9.chunk.js.map": "/todo-proj-2020/static/js/2.fe3701c9.chunk.js.map",
+    "index.html": "/todo-proj-2020/index.html",
+    "precache-manifest.945256b0eef3679e3e5a116783bed30b.js": "/todo-proj-2020/precache-manifest.945256b0eef3679e3e5a116783bed30b.js",
+    "service-worker.js": "/todo-proj-2020/service-worker.js",
+    "static/css/main.11aac216.chunk.css.map": "/todo-proj-2020/static/css/main.11aac216.chunk.css.map",
+    "static/js/2.fe3701c9.chunk.js.LICENSE": "/todo-proj-2020/static/js/2.fe3701c9.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bbbc9304.js",
+    "static/js/2.fe3701c9.chunk.js",
+    "static/css/main.11aac216.chunk.css",
+    "static/js/main.3c8388e8.chunk.js"
+  ]
+}
