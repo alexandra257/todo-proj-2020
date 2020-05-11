@@ -77,7 +77,6 @@ class App extends React.Component {
 
 
   completeTask = taskId => {
-
     const taskCompleted = { completed: 1 }
 
     axios.put(`https://oabkodhmw0.execute-api.eu-west-2.amazonaws.com/dev/tasks/${taskId}`, taskCompleted)
@@ -87,12 +86,11 @@ class App extends React.Component {
         for (let i = 0; i < taskCompleted.length; i++) { //looping through the array of tasks
           const task = taskCompleted[i]; //looking at each individual one
           if (task.taskID === taskId) { //if the task id matches the taskID passed in
-            task.completed = true;  //mark task completed as true
+            task.completed = !task.completed;  //mark task completed as true
             //need to ensure the counter is
             break;
           }
         }
-
         this.setState({
           tasks: taskCompleted
         });

@@ -14,6 +14,7 @@ class Task extends React.Component {
 
   doneClicked = () => {
     this.props.completedTaskFunc(this.props.item.taskID);
+
   };
 
   starTaskClick = () => {
@@ -31,14 +32,6 @@ class Task extends React.Component {
     }
 
 
-    // let star;
-    // if (this.props.item.starred) {
-    //   star = <button type="button" className="btn"><StarButtonFilled onClick={this.starTaskClick} /></button>
-
-    // } else {
-    //   star = <button type="button" className="btn"><StarButtonOutline onClick={this.starTaskClick} /></button>
-
-    // }
 
     const StarButtonOutline = styled(StarBorderIcon)({
       color: '#feb72b',
@@ -52,6 +45,8 @@ class Task extends React.Component {
     const DeleteButton = styled(DeleteForeverOutlinedIcon)({
       color: '#FE6B8B'
     });
+
+
 
 
     return (
