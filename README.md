@@ -1,21 +1,41 @@
-<h2>Lotus Flow</h2>
-<h4>A simple to do list application built using react as a learning project to practice concepts of front & back end web development as part of the Step into Tech course @ BBC. <em>This application is still a WIP.</em></h4>
+### Lotus Flow
+A simple to do list application built using react as a learning project to practice concepts of front & back end web development as part of the Step into Tech course @ BBC.
+
+The application has been deployed using gh pages. The hosted version can be accessed here: [https://alexandra257.github.io/todo-proj-2020/](https://alexandra257.github.io/todo-proj-2020/)
+
+This project integrates with a backend that can be found here: [https://github.com/alexandra257/todo-proj-backend](https://github.com/alexandra257/todo-proj-backend)
+
+<img width="700" alt="lotusflow" src="https://user-images.githubusercontent.com/51163638/81590906-7768b000-93b3-11ea-9bd4-d6cf7791e837.png">
+
+### Technology Used
+
+This project uses the following technologies:
+
+- ReactJS
+- JavaScript (ES2015+)
+- CSS / Bootstrap
+- Axios
+- Moment.js
+- Material UI
+
+### Running the application locally
+
+[Node.js](https://nodejs.org/en/) must be installed if not already.
+
+Clone the application and install dependencies:
+
+    npm install
+
+To start the application:
+
+    npm start
 
 
-<br />The application has been deployed using gh pages, and can be accessed <a href="https://alexandra257.github.io/todo-proj-2020/">here.</a>
-<br />
 
-
-<br /><img width="700" alt="lotusflow" src="https://user-images.githubusercontent.com/51163638/81590906-7768b000-93b3-11ea-9bd4-d6cf7791e837.png">
-
-<br> The repository for the back end of this application can be found <a href="https://github.com/alexandra257/todo-proj-backend">here.</a>
-<br />
-<br />Database Schema for application:
-<br /><img width="400" alt="database-schema" src="https://user-images.githubusercontent.com/51163638/81576945-c527ed00-93a0-11ea-99f0-95ccb35672e2.png">
-
-
+<em>This application is still a WIP.</em>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
