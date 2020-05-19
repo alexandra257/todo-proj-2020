@@ -77,7 +77,7 @@ class App extends React.Component {
           const task = taskCompleted[i]; // looking at each individual one & storing it in a variable called task
           // if the taskID that we're currently iterating over matches taskID passed in
           if (task.taskID === taskId) {
-            task.completed = !task.completed; // set the boolean value to the opposite of it's current value
+            task.completed = !task.completed;
             break;
           }
         }
@@ -145,7 +145,7 @@ class App extends React.Component {
           </div>
 
           <div className="col-lg-6 col-md-12 col-sm-12 rounded task-list">
-            <TaskCount taskCount={this.state.tasks.length} />
+            <TaskCount taskCollection={this.state.tasks} />
             <TaskList
               taskCollection={this.state.tasks}
               deleteTaskFunc={this.deleteTask}

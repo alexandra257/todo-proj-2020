@@ -3,7 +3,11 @@ import "./Task.css";
 
 class TaskCount extends React.Component {
   render() {
-    if (this.props.taskCount === 0) {
+    const { taskCollection } = this.props;
+    let tasksLeft = taskCollection.filter((task) => !task.completed);
+    console.warn({ taskCollection, tasksLeft });
+
+    if (tasksLeft.length === 0) {
       return (
         <h3 className="m-3 pt-2">
           Congrats, you can relax! There are no tasks to do.
@@ -12,15 +16,10 @@ class TaskCount extends React.Component {
     } else {
       return (
         <div className="m-3 pt-2">
-          <h3>Tasks left: {this.props.taskCount}</h3>
+          <h3>Tasks left: {tasksLeft.length}</h3>
         </div>
       );
     }
-
-    // return (
-
-    //   { areThereTasks }
-    // );
   }
 }
 
